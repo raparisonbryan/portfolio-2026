@@ -1,0 +1,149 @@
+@use '../../styles/design-system' as *;
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  @include flex-center;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+}
+
+.logoWrapper {
+  position: relative;
+  @include flex-center;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+
+  @include md {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.3) 0%,
+    rgba(249, 115, 22, 0.2) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.text {
+  display: flex;
+  gap: 2px;
+  font-family: $font-family-display;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+
+  @include md {
+    font-size: $font-size-5xl;
+  }
+}
+
+.char {
+  display: inline-block;
+  @include gradient-text;
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-wide;
+}
+
+.loading {
+  display: flex;
+  gap: $space-2;
+  margin-top: $space-4;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-brand-500);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.circle1 {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, var(--color-brand-500), var(--color-accent-500));
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.circle2 {
+  position: absolute;
+  bottom: -30%;
+  left: -20%;
+  width: 800px;
+  height: 800px;
+  background: linear-gradient(135deg, var(--color-accent-500), var(--color-brand-500));
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.splash::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 70%);
+}
+

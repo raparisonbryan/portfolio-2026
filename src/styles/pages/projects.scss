@@ -1,0 +1,61 @@
+@use '../design-system' as *;
+
+.projects-page {
+  padding: $space-32 0 $space-24;
+  min-height: 100vh;
+}
+
+.container {
+  @include container;
+}
+
+.page-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto $space-16;
+}
+
+.page-label {
+  display: inline-block;
+  padding: $space-1 $space-3;
+  background: var(--color-brand-100);
+  color: var(--color-brand-700);
+  border-radius: $radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $space-4;
+
+  [data-theme='dark'] & {
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--color-brand-400);
+  }
+}
+
+.page-title {
+  @include heading-xl;
+  color: var(--text-primary);
+  margin-bottom: $space-6;
+}
+
+.page-description {
+  @include body-lg;
+  color: var(--text-secondary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: $space-8;
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+

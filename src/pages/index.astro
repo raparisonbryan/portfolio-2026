@@ -1,0 +1,123 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/hero/Hero";
+import ProjectCard, {
+  type Project,
+} from "@components/project-card/ProjectCard";
+import Skills from "@components/skills/Skills";
+import "@styles/pages/home.scss";
+
+const featuredProjects: Project[] = [
+  {
+    id: "1",
+    title: "E-Commerce Platform",
+    description:
+      "Une plateforme e-commerce complète avec panier, paiement Stripe, gestion des commandes et dashboard admin. Interface moderne et responsive.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com",
+    featured: true,
+  },
+  {
+    id: "2",
+    title: "Task Management App",
+    description:
+      "Application de gestion de tâches avec drag & drop, collaboration en temps réel et notifications push.",
+    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "3",
+    title: "Portfolio Generator",
+    description:
+      "Un générateur de portfolio automatique à partir de vos repos GitHub. Personnalisable et déployable en un clic.",
+    tags: ["Astro", "TypeScript", "GitHub API"],
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "4",
+    title: "Weather Dashboard",
+    description:
+      "Dashboard météo avec prévisions, cartes interactives et alertes personnalisées.",
+    tags: ["Vue.js", "D3.js", "OpenWeather API"],
+    liveUrl: "https://example.com",
+  },
+];
+---
+
+<BaseLayout title="Bryan | Développeur Full Stack">
+  <Hero client:load />
+
+  <section class="projects-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Projets récents</h2>
+        <p class="section-description">
+          Découvrez quelques-uns de mes projets les plus récents. Chaque projet
+          représente un défi unique et une opportunité d'apprentissage.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        {
+          featuredProjects.map((project, index) => (
+            <ProjectCard project={project} index={index} client:visible />
+          ))
+        }
+      </div>
+
+      <div class="section-cta">
+        <a href="/projects" class="view-all-link">
+          Voir tous les projets
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12H19M19 12L12 5M19 12L12 19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Skills client:visible />
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Un projet en tête ?</h2>
+        <p class="cta-description">
+          Je suis toujours ouvert à discuter de nouveaux projets, d'idées
+          créatives ou d'opportunités de collaboration.
+        </p>
+        <a href="/contact" class="cta-button">
+          Discutons ensemble
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 17L17 7M17 7H7M17 7V17"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

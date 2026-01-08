@@ -1,0 +1,204 @@
+@use '../design-system' as *;
+
+.about-page {
+  padding: $space-32 0 $space-16;
+}
+
+.container {
+  @include container;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: $space-16;
+}
+
+.page-label {
+  display: inline-block;
+  padding: $space-1 $space-3;
+  background: var(--color-brand-100);
+  color: var(--color-brand-700);
+  border-radius: $radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $space-4;
+
+  [data-theme='dark'] & {
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--color-brand-400);
+  }
+}
+
+.page-title {
+  @include heading-xl;
+  color: var(--text-primary);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  @include lg {
+    grid-template-columns: 350px 1fr;
+  }
+}
+
+.about-image {
+  position: sticky;
+  top: $space-24;
+}
+
+.image-placeholder {
+  aspect-ratio: 1;
+  max-width: 350px;
+  margin: 0 auto;
+  @include flex-center;
+  background: var(--gradient-hero);
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-2xl;
+  color: var(--text-tertiary);
+}
+
+.about-text {
+  h2 {
+    @include heading-sm;
+    color: var(--text-primary);
+    margin-bottom: $space-6;
+  }
+
+  p {
+    @include body-lg;
+    color: var(--text-secondary);
+    margin-bottom: $space-4;
+
+    &:last-of-type {
+      margin-bottom: $space-8;
+    }
+  }
+}
+
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-8;
+  padding-top: $space-8;
+  border-top: 1px solid var(--border-primary);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.stat-value {
+  font-family: $font-family-display;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  @include gradient-text;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: $font-size-sm;
+  color: var(--text-tertiary);
+}
+
+.experience-section {
+  padding: $space-24 0;
+  background: var(--bg-secondary);
+}
+
+.section-title {
+  @include heading-md;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: $space-16;
+}
+
+.timeline {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: $space-8;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-brand-500),
+      var(--color-accent-500)
+    );
+    border-radius: $radius-full;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: $space-10;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  left: calc(-#{$space-8} - 5px);
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-brand);
+  border: 2px solid var(--bg-primary);
+  border-radius: $radius-full;
+  box-shadow: 0 0 0 4px var(--color-brand-100);
+
+  [data-theme='dark'] & {
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+  }
+}
+
+.timeline-content {
+  @include card;
+}
+
+.timeline-date {
+  display: inline-block;
+  padding: $space-1 $space-2;
+  background: var(--surface-secondary);
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--text-tertiary);
+  margin-bottom: $space-2;
+}
+
+.timeline-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+  margin-bottom: $space-1;
+}
+
+.timeline-company {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-brand);
+  margin-bottom: $space-3;
+}
+
+.timeline-description {
+  @include body-base;
+  color: var(--text-secondary);
+}
+
+

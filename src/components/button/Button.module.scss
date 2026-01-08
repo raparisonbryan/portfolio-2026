@@ -1,0 +1,70 @@
+@use '../../styles/design-system' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  border: none;
+  border-radius: $radius-md;
+  font-family: $font-family-sans;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+// Variants
+.primary {
+  background: var(--bg-brand);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: var(--bg-brand-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bg-brand);
+    outline-offset: 2px;
+  }
+}
+
+.secondary {
+  background: transparent;
+  color: var(--text-brand);
+  border: 1px solid var(--border-brand);
+
+  &:hover:not(:disabled) {
+    background: var(--surface-brand-subtle);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-brand);
+    outline-offset: 2px;
+  }
+}
+
+// Sizes
+.sm {
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+}
+
+.md {
+  padding: $space-3 $space-6;
+  font-size: $font-size-base;
+}
+
+.lg {
+  padding: $space-4 $space-8;
+  font-size: $font-size-lg;
+}

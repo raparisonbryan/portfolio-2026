@@ -1,0 +1,107 @@
+@use '../../styles/design-system' as *;
+
+.section {
+  padding: $space-24 0;
+  background: var(--bg-secondary);
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto $space-16;
+}
+
+.label {
+  display: inline-block;
+  padding: $space-1 $space-3;
+  background: var(--color-brand-100);
+  color: var(--color-brand-700);
+  border-radius: $radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $space-4;
+
+  [data-theme='dark'] & {
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--color-brand-400);
+  }
+}
+
+.title {
+  @include heading-md;
+  color: var(--text-primary);
+  margin-bottom: $space-4;
+}
+
+.description {
+  @include body-lg;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-8;
+}
+
+.category {
+  @include card;
+}
+
+.categoryTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+  margin-bottom: $space-6;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.skillHeader {
+  @include flex-between;
+}
+
+.skillName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.skillLevel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-tertiary);
+  font-family: $font-family-mono;
+}
+
+.progressBar {
+  height: 6px;
+  background: var(--surface-secondary);
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-brand-500), var(--color-accent-500));
+  border-radius: $radius-full;
+}
+

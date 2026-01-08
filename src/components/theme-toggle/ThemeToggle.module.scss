@@ -1,0 +1,36 @@
+@use '../../styles/design-system' as *;
+
+.toggle {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-lg;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: var(--interactive-hover);
+    border-color: var(--border-secondary);
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.placeholder {
+  width: 20px;
+  height: 20px;
+  background: var(--border-primary);
+  border-radius: $radius-full;
+}
+

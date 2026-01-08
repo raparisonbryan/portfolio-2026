@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard, {
+  type Project,
+} from "../components/project-card/ProjectCard";
+import "../styles/pages/projects.scss";
+
+const projects: Project[] = [
+  {
+    id: "1",
+    title: "E-Commerce Platform",
+    description:
+      "Une plateforme e-commerce complète avec panier, paiement Stripe, gestion des commandes et dashboard admin. Interface moderne et responsive.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com",
+    featured: true,
+  },
+  {
+    id: "2",
+    title: "Task Management App",
+    description:
+      "Application de gestion de tâches avec drag & drop, collaboration en temps réel et notifications push.",
+    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "3",
+    title: "Portfolio Generator",
+    description:
+      "Un générateur de portfolio automatique à partir de vos repos GitHub. Personnalisable et déployable en un clic.",
+    tags: ["Astro", "TypeScript", "GitHub API"],
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "4",
+    title: "Weather Dashboard",
+    description:
+      "Dashboard météo avec prévisions, cartes interactives et alertes personnalisées.",
+    tags: ["Vue.js", "D3.js", "OpenWeather API"],
+    liveUrl: "https://example.com",
+  },
+  {
+    id: "5",
+    title: "Real-time Chat Application",
+    description:
+      "Application de messagerie instantanée avec rooms, messages privés, partage de fichiers et indicateurs de présence.",
+    tags: ["React", "WebSocket", "Redis", "PostgreSQL"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "6",
+    title: "AI Content Generator",
+    description:
+      "Outil de génération de contenu utilisant GPT-4 pour créer des articles, des descriptions produits et des posts réseaux sociaux.",
+    tags: ["Next.js", "OpenAI API", "Tailwind"],
+    liveUrl: "https://example.com",
+  },
+];
+---
+
+<BaseLayout
+  title="Projets | Bryan - Développeur Full Stack"
+  description="Découvrez mes projets de développement web : applications React, sites e-commerce, dashboards et plus encore."
+>
+  <section class="projects-page">
+    <div class="container">
+      <header class="page-header">
+        <span class="page-label">Portfolio</span>
+        <h1 class="page-title">Mes projets</h1>
+        <p class="page-description">
+          Une sélection de projets sur lesquels j'ai travaillé. Chaque projet
+          représente un défi unique et une opportunité d'apprendre de nouvelles
+          technologies.
+        </p>
+      </header>
+
+      <div class="projects-grid">
+        {
+          projects.map((project, index) => (
+            <ProjectCard project={project} index={index} client:visible />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
