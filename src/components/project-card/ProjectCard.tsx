@@ -1,15 +1,17 @@
 import { motion, type Variants } from 'framer-motion';
+import type { ImageMetadata } from 'astro';
 import styles from './ProjectCard.module.scss';
 
 export interface Project {
   id: string;
   title: string;
   description: string;
-  image?: string;
+  image?: string | ImageMetadata;
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  isPrivate?: boolean;
 }
 
 interface ProjectCardProps {
@@ -45,7 +47,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className={styles.imageWrapper}>
         {project.image ? (
           <img
-            src={project.image}
+            src={typeof project.image === 'string' ? project.image : project.image.src}
             alt={`Screenshot de ${project.title}`}
             className={styles.image}
             loading="lazy"
@@ -81,7 +83,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         )}
         <div className={styles.overlay}>
           <div className={styles.links}>
-            {project.liveUrl && (
+            {project.liveUrl && !project.isPrivate && (
               <motion.a
                 href={project.liveUrl}
                 target="_blank"
@@ -122,7 +124,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </svg>
               </motion.a>
             )}
-            {project.githubUrl && (
+            {project.githubUrl && !project.isPrivate && (
               <motion.a
                 href={project.githubUrl}
                 target="_blank"

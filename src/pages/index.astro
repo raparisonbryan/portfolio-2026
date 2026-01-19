@@ -6,42 +6,55 @@ import ProjectCard, {
 } from "@components/project-card/ProjectCard";
 import Skills from "@components/skills/Skills";
 import "@styles/pages/home.scss";
+import HomeIntranetImage from "@assets/images/home_intranet.png";
+import HomeWereviewImage from "@assets/images/home_wereview.png";
+import HomeCciImage from "@assets/images/home_cci.png";
+import HomeAppAdvisorImage from "@assets/images/home_appadvisor.png";
 
 const featuredProjects: Project[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
+    title: "Intranet We Made Ya",
     description:
-      "Une plateforme e-commerce complète avec panier, paiement Stripe, gestion des commandes et dashboard admin. Interface moderne et responsive.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+      "Plateforme interne pour la société We Made Ya, permettant la gestion des commandes de spot audio et vidéo.",
+    tags: ["Next.js", "TypeScript", "GraphQL", "AWS S3"],
     featured: true,
+    liveUrl: "https://intranet.wmy.fr",
+    githubUrl: "https://github.com/wemadeya/intranet-frontend",
+    isPrivate: true,
+    image: HomeIntranetImage.src,
   },
   {
     id: "2",
-    title: "Task Management App",
+    title: "We Review",
     description:
-      "Application de gestion de tâches avec drag & drop, collaboration en temps réel et notifications push.",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+      "Plateforme de revue de vidéo et de textes pour les clients de We Made Ya, facilitant le processus de révision et de modification des spots.",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
+    liveUrl: "https://wereview.wmy.fr",
+    githubUrl: "https://github.com/wemadeya/machine-reviser",
+    isPrivate: true,
+    image: HomeWereviewImage.src,
   },
   {
     id: "3",
-    title: "Portfolio Generator",
+    title: "Calendrier CCI",
     description:
-      "Un générateur de portfolio automatique à partir de vos repos GitHub. Personnalisable et déployable en un clic.",
-    tags: ["Astro", "TypeScript", "GitHub API"],
-    githubUrl: "https://github.com",
+      "Application de gestion du calendrier du centre de conférences international d'Antananarivo.",
+    tags: ["Next.js", "TypeScript", "Google API", "Node.js"],
+    liveUrl: "https://calendrier.cci-api.com",
+    githubUrl: "https://github.com/raparisonbryan/cci-frontend.git",
+    isPrivate: false,
+    image: HomeCciImage.src,
   },
   {
     id: "4",
-    title: "Weather Dashboard",
+    title: "AppAdvisor",
     description:
-      "Dashboard météo avec prévisions, cartes interactives et alertes personnalisées.",
-    tags: ["Vue.js", "D3.js", "OpenWeather API"],
-    liveUrl: "https://example.com",
+      "Site web de veille sur les outils informatiques, basé sur un système d'avis et de classement.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "Node.js"],
+    githubUrl: "https://github.com/raparisonbryan/App-Advisor-frontend.git",
+    isPrivate: false,
+    image: HomeAppAdvisorImage.src,
   },
 ];
 ---
@@ -55,8 +68,7 @@ const featuredProjects: Project[] = [
         <span class="section-label">Portfolio</span>
         <h2 class="section-title">Projets récents</h2>
         <p class="section-description">
-          Découvrez quelques-uns de mes projets les plus récents. Chaque projet
-          représente un défi unique et une opportunité d'apprentissage.
+          Voici une sélection de projets sur lesquels j’ai contribué récemment.
         </p>
       </div>
 
