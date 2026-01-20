@@ -10,6 +10,9 @@ import HomeIntranetImage from "@assets/images/home_intranet.png";
 import HomeWereviewImage from "@assets/images/home_wereview.png";
 import HomeCciImage from "@assets/images/home_cci.png";
 import HomeAppAdvisorImage from "@assets/images/home_appadvisor.png";
+import Button from "@/components/button/Button";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import CVDownload from "@/components/cv-download/CVDownload";
 
 const featuredProjects: Project[] = [
   {
@@ -79,25 +82,11 @@ const featuredProjects: Project[] = [
           ))
         }
       </div>
-
-      <div class="section-cta">
-        <a href="/projects" class="view-all-link">
-          Voir tous les projets
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 12H19M19 12L12 5M19 12L12 19"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </a>
+     
+      <div class="projets-cta">
+        <Button title="Voir tous les projets" onClick={() => window.location.href = '/projects'}>
+          <ArrowRightIcon />
+        </Button>
       </div>
     </div>
   </section>
@@ -107,28 +96,17 @@ const featuredProjects: Project[] = [
   <section class="cta-section">
     <div class="container">
       <div class="cta-content">
-        <h2 class="cta-title">Un projet en tête ?</h2>
+        <h2 class="cta-title">Et maintenant ?</h2>
         <p class="cta-description">
-          Je suis toujours ouvert à discuter de nouveaux projets, d'idées
-          créatives ou d'opportunités de collaboration.
+          Je souhaite rejoindre une équipe en tant que développeur web pour continuer 
+          à progresser et participer au développement de produits web de qualité.
         </p>
-        <a href="/contact" class="cta-button">
-          Discutons ensemble
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 17L17 7M17 7H7M17 7V17"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </a>
+        <div class="cta-buttons">
+          <Button title="Discutons ensemble" onClick={() => window.location.href = '/contact'}>
+            <ArrowRightIcon />
+          </Button>
+          <CVDownload client:load />
+        </div>
       </div>
     </div>
   </section>

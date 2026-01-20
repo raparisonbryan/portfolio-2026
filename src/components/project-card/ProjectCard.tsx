@@ -33,6 +33,10 @@ const cardVariants: Variants = {
 };
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const handleCardClick = () => {
+    window.location.href = '/projects';
+  };
+
   return (
     <motion.article
       className={`${styles.card} ${project.featured ? styles.featured : ''}`}
@@ -43,6 +47,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       custom={index}
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
+      onClick={handleCardClick}
     >
       <div className={styles.imageWrapper}>
         {project.image ? (
@@ -91,6 +96,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 className={styles.link}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={(e) => e.stopPropagation()}
                 aria-label={`Voir ${project.title} en ligne`}
               >
                 <svg
@@ -132,6 +138,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 className={styles.link}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={(e) => e.stopPropagation()}
                 aria-label={`Voir le code source de ${project.title}`}
               >
                 <svg

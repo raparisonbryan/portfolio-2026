@@ -44,16 +44,19 @@
 }
 
 .projects-grid {
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: $space-6;
+  max-width: 1000px;
+  margin: 0 auto;
 
   @include lg {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.section-cta {
+.projets-cta {
   display: flex;
   justify-content: center;
   margin-top: $space-12;
@@ -88,7 +91,7 @@
       linear-gradient(var(--border-primary) 1px, transparent 1px),
       linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
     background-size: 40px 40px;
-    opacity: 0.3;
+    opacity: 0.5;
   }
 }
 
@@ -111,19 +114,12 @@
   margin-bottom: $space-8;
 }
 
-.cta-button {
-  @include button-primary;
-  padding: $space-4 $space-8;
-  font-size: $font-size-base;
-  text-decoration: none;
-
-  svg {
-    transition: transform $transition-fast;
-  }
-
-  &:hover svg {
-    transform: translate(2px, -2px);
-  }
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-4;
+  justify-content: center;
+  align-items: center;
 }
 
 

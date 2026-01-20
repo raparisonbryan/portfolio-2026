@@ -6,6 +6,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .featured {
@@ -68,6 +69,8 @@
   color: var(--color-gray-900);
   border-radius: $radius-full;
   transition: background-color $transition-fast;
+  position: relative;
+  z-index: 1;
 
   &:hover {
     background: var(--color-brand-100);

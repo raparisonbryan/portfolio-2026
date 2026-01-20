@@ -46,8 +46,16 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: $space-8;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-6;
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .category {
@@ -63,45 +71,34 @@
   border-bottom: 1px solid var(--border-primary);
 }
 
-.skillsList {
+.technologiesList {
   display: flex;
-  flex-direction: column;
-  gap: $space-5;
-}
-
-.skill {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: $space-2;
 }
 
-.skillHeader {
-  @include flex-between;
-}
-
-.skillName {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: var(--text-primary);
-}
-
-.skillLevel {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: var(--text-tertiary);
-  font-family: $font-family-mono;
-}
-
-.progressBar {
-  height: 6px;
+.techBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
   background: var(--surface-secondary);
-  border-radius: $radius-full;
-  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  font-family: $font-family-mono;
+  cursor: default;
 }
 
-.progressFill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--color-brand-500), var(--color-accent-500));
-  border-radius: $radius-full;
-}
+.techIcon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  filter: grayscale(1) contrast(1.2);
 
+  [data-theme='dark'] & {
+    filter: grayscale(1) invert(1) contrast(1.2);
+  }
+}
