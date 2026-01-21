@@ -1,15 +1,17 @@
 import { motion, type Variants } from 'framer-motion';
+import type { ImageMetadata } from 'astro';
 import styles from './ProjectCard.module.scss';
 
 export interface Project {
   id: string;
   title: string;
   description: string;
-  image?: string;
+  image?: string | ImageMetadata;
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  isPrivate?: boolean;
 }
 
 interface ProjectCardProps {
@@ -31,6 +33,10 @@ const cardVariants: Variants = {
 };
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
+  const handleCardClick = () => {
+    window.location.href = '/projects';
+  };
+
   return (
     <motion.article
       className={`${styles.card} ${project.featured ? styles.featured : ''}`}
@@ -41,11 +47,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       custom={index}
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
+      onClick={handleCardClick}
     >
       <div className={styles.imageWrapper}>
         {project.image ? (
           <img
-            src={project.image}
+            src={typeof project.image === 'string' ? project.image : project.image.src}
             alt={`Screenshot de ${project.title}`}
             className={styles.image}
             loading="lazy"
@@ -81,7 +88,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         )}
         <div className={styles.overlay}>
           <div className={styles.links}>
-            {project.liveUrl && (
+            {project.liveUrl && !project.isPrivate && (
               <motion.a
                 href={project.liveUrl}
                 target="_blank"
@@ -89,6 +96,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 className={styles.link}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={(e) => e.stopPropagation()}
                 aria-label={`Voir ${project.title} en ligne`}
               >
                 <svg
@@ -122,7 +130,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </svg>
               </motion.a>
             )}
-            {project.githubUrl && (
+            {project.githubUrl && !project.isPrivate && (
               <motion.a
                 href={project.githubUrl}
                 target="_blank"
@@ -130,6 +138,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 className={styles.link}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={(e) => e.stopPropagation()}
                 aria-label={`Voir le code source de ${project.title}`}
               >
                 <svg
