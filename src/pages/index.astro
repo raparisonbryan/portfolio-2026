@@ -13,6 +13,7 @@ import HomeAppAdvisorImage from "@assets/images/home_appadvisor.png";
 import Button from "@/components/button/Button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import CVDownload from "@/components/cv-download/CVDownload";
+import ProjectCTA from "@/components/project-cta/ProjectCTA";
 
 const featuredProjects: Project[] = [
   {
@@ -48,17 +49,7 @@ const featuredProjects: Project[] = [
     githubUrl: "https://github.com/raparisonbryan/cci-frontend.git",
     isPrivate: false,
     image: HomeCciImage.src,
-  },
-  {
-    id: "4",
-    title: "AppAdvisor",
-    description:
-      "Site web de veille sur les outils informatiques, basé sur un système d'avis et de classement.",
-    tags: ["Next.js", "TypeScript", "MongoDB", "Node.js"],
-    githubUrl: "https://github.com/raparisonbryan/App-Advisor-frontend.git",
-    isPrivate: false,
-    image: HomeAppAdvisorImage.src,
-  },
+  }
 ];
 ---
 
@@ -81,13 +72,9 @@ const featuredProjects: Project[] = [
             <ProjectCard project={project} index={index} client:visible />
           ))
         }
-      </div>
-     
-      <div class="projets-cta">
-        <Button title="Voir tous les projets" onClick={() => window.location.href = '/projects'}>
-          <ArrowRightIcon />
-        </Button>
-      </div>
+      </div> 
+      
+      <ProjectCTA client:load />
     </div>
   </section>
 

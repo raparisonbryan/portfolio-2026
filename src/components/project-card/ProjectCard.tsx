@@ -12,11 +12,19 @@ export interface Project {
   githubUrl?: string;
   featured?: boolean;
   isPrivate?: boolean;
+  context?: string;
+  challenges?: string[];
+  image2?: string | ImageMetadata;
+  image3?: string | ImageMetadata;
+  result?: string;
 }
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  onClick?: () => void;
+  isSelected?: boolean;
+  isListMode?: boolean;
 }
 
 const cardVariants: Variants = {
@@ -32,21 +40,33 @@ const cardVariants: Variants = {
   }),
 };
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+  index,
+  onClick,
+  isSelected = false,
+  isListMode = false,
+}: ProjectCardProps) {
   const handleCardClick = () => {
-    window.location.href = '/projects';
+    if (onClick) {
+      onClick();
+    } else {
+      window.location.href = `/projects?project=${project.id}`;
+    }
   };
 
   return (
     <motion.article
-      className={`${styles.card} ${project.featured ? styles.featured : ''}`}
+      className={`${styles.card} ${project.featured && !isListMode ? styles.featured : ''} ${
+        isSelected ? styles.selected : ''
+      } ${isListMode ? styles.listMode : ''}`}
       variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      initial={isListMode ? 'visible' : 'hidden'}
+      whileInView={isListMode ? undefined : 'visible'}
+      viewport={isListMode ? undefined : { once: true, margin: '-50px' }}
       custom={index}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
+      whileHover={isListMode ? {} : { y: -8 }}
+      transition={{ duration: 0.1, ease: 'easeOut' }}
       onClick={handleCardClick}
     >
       <div className={styles.imageWrapper}>
