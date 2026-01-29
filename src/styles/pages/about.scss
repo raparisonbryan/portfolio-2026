@@ -50,17 +50,9 @@
 .about-image {
   position: sticky;
   top: $space-24;
-}
-
-.image-placeholder {
-  aspect-ratio: 1;
-  max-width: 350px;
-  margin: 0 auto;
-  @include flex-center;
-  background: var(--gradient-hero);
   border: 1px solid var(--border-primary);
   border-radius: $radius-2xl;
-  color: var(--text-tertiary);
+  overflow: hidden;
 }
 
 .about-text {
