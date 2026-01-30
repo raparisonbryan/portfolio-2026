@@ -8,6 +8,33 @@
   @include container;
 }
 
+.about-first-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+  grid-template-areas:
+    'header'
+    'image'
+    'subtitle'
+    'text'
+    'stats';
+
+  @include lg {
+    grid-template-columns: 350px 1fr;
+    grid-template-areas:
+      'header header'
+      'image subtitle'
+      'image text'
+      'image stats';
+  }
+}
+
+.about-stagger-header { grid-area: header; }
+.about-stagger-image { grid-area: image; }
+.about-stagger-subtitle { grid-area: subtitle; }
+.about-stagger-text { grid-area: text; }
+.about-stagger-stats { grid-area: stats; }
+
 .page-header {
   text-align: center;
   margin-bottom: $space-16;
@@ -36,17 +63,6 @@
   color: var(--text-primary);
 }
 
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-12;
-  align-items: start;
-
-  @include lg {
-    grid-template-columns: 350px 1fr;
-  }
-}
-
 .about-image {
   position: sticky;
   top: $space-24;
@@ -55,21 +71,19 @@
   overflow: hidden;
 }
 
-.about-text {
-  h2 {
-    @include heading-sm;
-    color: var(--text-primary);
-    margin-bottom: $space-6;
-  }
+.about-subtitle {
+  @include heading-sm;
+  color: var(--text-primary);
+  margin-bottom: $space-6;
+}
 
-  p {
-    @include body-lg;
-    color: var(--text-secondary);
-    margin-bottom: $space-4;
+.about-paragraphs p {
+  @include body-lg;
+  color: var(--text-secondary);
+  margin-bottom: $space-4;
 
-    &:last-of-type {
-      margin-bottom: $space-8;
-    }
+  &:last-of-type {
+    margin-bottom: $space-8;
   }
 }
 
@@ -100,6 +114,7 @@
   color: var(--text-tertiary);
 }
 
+// --- Experience section ---
 .experience-section {
   padding: $space-24 0;
   background: var(--bg-secondary);
@@ -112,6 +127,7 @@
   margin-bottom: $space-16;
 }
 
+// --- Timeline ---
 .timeline {
   max-width: 700px;
   margin: 0 auto;
@@ -192,5 +208,3 @@
   @include body-base;
   color: var(--text-secondary);
 }
-
-
