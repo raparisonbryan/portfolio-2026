@@ -1,113 +1,64 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Skills from '../components/skills/Skills';
-import '../styles/pages/about.scss';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Skills from "@components/skills/Skills";
+import { AboutHero } from "@/components/about/AboutHero";
+import { AboutTimeline } from "@/components/about/AboutTimeline";
+import "@styles/pages/about.scss";
+import AboutImage from "@assets/images/profile.jpg";
+import hobbyFootball from "@assets/images/hobbies/football.png";
+import hobbyAutomobile from "@assets/images/hobbies/auto.png";
+import hobbyMusique from "@assets/images/hobbies/musique.png";
+import hobbyVoyage from "@assets/images/hobbies/voyage.png";
+import hobbyTennis from "@assets/images/hobbies/tennis.png";
+
+const hobbies = [
+  { label: "Football", image: hobbyFootball },
+  { label: "Sport automobile", image: hobbyAutomobile },
+  { label: "Musique", image: hobbyMusique },
+  { label: "Voyages", image: hobbyVoyage },
+  { label: "Tennis", image: hobbyTennis },
+];
 ---
 
-<BaseLayout title="À propos | Bryan - Développeur Full Stack" description="Découvrez mon parcours, mes compétences et ma passion pour le développement web.">
+<BaseLayout
+  title="À propos | Bryan - Développeur Full Stack"
+  description="Découvrez mon parcours, mes compétences et ma passion pour le développement web."
+>
   <section class="about-page">
     <div class="container">
-      <header class="page-header">
-        <span class="page-label">À propos</span>
-        <h1 class="page-title">Qui suis-je ?</h1>
-      </header>
-      
-      <div class="about-content">
-        <div class="about-image">
-          <div class="image-placeholder">
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        
-        <div class="about-text">
-          <h2>Développeur passionné par le web</h2>
-          <p>
-            Bonjour ! Je suis Bryan, développeur Full Stack basé en France. Depuis plus de 5 ans, 
-            je conçois et développe des applications web modernes, en mettant l'accent sur 
-            l'expérience utilisateur et la qualité du code.
-          </p>
-          <p>
-            Mon parcours m'a permis de travailler sur des projets variés : des startups 
-            innovantes aux grandes entreprises, en passant par des projets personnels 
-            ambitieux. Cette diversité m'a appris à m'adapter rapidement et à trouver 
-            les solutions les plus adaptées à chaque contexte.
-          </p>
-          <p>
-            Quand je ne code pas, vous me trouverez probablement en train d'explorer 
-            les dernières technologies, de contribuer à des projets open source, ou 
-            de partager mes connaissances à travers des articles techniques.
-          </p>
-          
-          <div class="about-stats">
-            <div class="stat">
-              <span class="stat-value">5+</span>
-              <span class="stat-label">Années d'expérience</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">50+</span>
-              <span class="stat-label">Projets réalisés</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">20+</span>
-              <span class="stat-label">Clients satisfaits</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <AboutHero client:visible imageSrc={AboutImage.src} />
     </div>
   </section>
-  
+
   <Skills client:visible />
-  
+
   <section class="experience-section">
     <div class="container">
-      <h2 class="section-title">Mon parcours</h2>
-      
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2023 - Présent</span>
-            <h3 class="timeline-title">Développeur Full Stack Senior</h3>
-            <p class="timeline-company">Entreprise Tech</p>
-            <p class="timeline-description">
-              Lead technique sur des projets React/Node.js. Mise en place d'architectures 
-              scalables et mentorat de développeurs juniors.
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2021 - 2023</span>
-            <h3 class="timeline-title">Développeur Front-end</h3>
-            <p class="timeline-company">Startup Innovation</p>
-            <p class="timeline-description">
-              Développement d'interfaces utilisateur complexes avec React et TypeScript. 
-              Optimisation des performances et mise en place de tests automatisés.
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2019 - 2021</span>
-            <h3 class="timeline-title">Développeur Web Junior</h3>
-            <p class="timeline-company">Agence Digitale</p>
-            <p class="timeline-description">
-              Création de sites web et d'applications pour divers clients. 
-              Apprentissage des bonnes pratiques et méthodologies agiles.
-            </p>
-          </div>
-        </div>
+      <div class="page-header">
+        <span class="page-label">Parcours</span>
+        <h2 class="section-title">Mon parcours</h2>
       </div>
+      <AboutTimeline client:visible />
     </div>
   </section>
-</BaseLayout>
 
-
+  <section class="hobbies-section">
+    <div class="container">
+      <div class="page-header">
+        <span class="page-label">Hobbies</span>
+        <h2 class="section-title">Hobbies & passions</h2>
+      </header>
+      <ul class="hobbies-grid">
+        {hobbies.map(({ label, image }) => (
+          <li class="hobby-card">
+            <div class="hobby-card__image">
+              <img src={image.src} alt={label} loading="lazy" />
+            </div>
+            <span class="hobby-card__label">{label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>;
+---

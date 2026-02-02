@@ -1,62 +1,157 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard, {
-  type Project,
-} from "../components/project-card/ProjectCard";
+import ProjectsView from "../components/projects-view/ProjectsView";
+import type { Project } from "../components/project-card/ProjectCard";
 import "../styles/pages/projects.scss";
+import HomeIntranetImage from "@assets/images/home_intranet.png";
+import HomeWereviewImage from "@assets/images/home_wereview.png";
+import HomeCciImage from "@assets/images/home_cci.png";
+import HomeAppAdvisorImage from "@assets/images/home_appadvisor.png";
+import HomeEcosAlphaImage from "@assets/images/home_ecos.png";
+import HomeHopiumImage from "@assets/images/home_hopium.png";
+import HomeVillaPakleniHvarImage from "@assets/images/home_pakleni.png";
 
+const initialProjectId = Astro.url.searchParams.get('project') ?? null;
 const projects: Project[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
+    title: "Intranet We Made Ya",
     description:
-      "Une plateforme e-commerce complète avec panier, paiement Stripe, gestion des commandes et dashboard admin. Interface moderne et responsive.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+      "Plateforme interne pour la société We Made Ya, permettant la gestion des commandes de spot audio et vidéo.",
+    tags: ["Next.js", "TypeScript", "GraphQL", "AWS S3"],
     featured: true,
+    liveUrl: "https://intranet.wmy.fr",
+    githubUrl: "https://github.com/wemadeya/intranet-frontend",
+    isPrivate: true,
+    image: HomeIntranetImage.src,
+    context:
+      "Développement d'une plateforme interne pour gérer l'ensemble du workflow de production de spots publicitaires, de la commande client à la livraison finale.",
+    challenges: [
+      "Gestion de fichiers volumineux (vidéos, audios) avec upload vers AWS S3",
+      "Mise en place d'un système de notifications en temps réel",
+      "Optimisation des performances pour gérer de grandes quantités de données",
+      "Intégration complexe avec GraphQL et gestion du cache",
+    ],
+    result:
+      "Plateforme opérationnelle permettant de réduire le temps de traitement des commandes de 40% et d'améliorer significativement la traçabilité des projets.",
   },
   {
     id: "2",
-    title: "Task Management App",
+    title: "We Review",
     description:
-      "Application de gestion de tâches avec drag & drop, collaboration en temps réel et notifications push.",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+      "Plateforme de revue de vidéo et de textes pour les clients de We Made Ya, facilitant le processus de révision et de modification des spots.",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
+    liveUrl: "https://wereview.wmy.fr",
+    githubUrl: "https://github.com/wemadeya/machine-reviser",
+    isPrivate: true,
+    image: HomeWereviewImage.src,
+    context:
+      "Création d'une plateforme collaborative permettant aux clients de We Made Ya de réviser et annoter leurs projets vidéo et textes en temps réel.",
+    challenges: [
+      "Implémentation d'un système d'annotations vidéo précis avec synchronisation temporelle",
+      "Gestion des permissions et des rôles utilisateurs",
+      "Optimisation du streaming vidéo pour une lecture fluide",
+      "Interface utilisateur intuitive pour faciliter les retours clients",
+    ],
+    result:
+      "Solution qui a permis de réduire de 50% le temps de révision des projets et d'améliorer la satisfaction client grâce à un processus plus transparent.",
   },
   {
     id: "3",
-    title: "Portfolio Generator",
+    title: "Calendrier CCI",
     description:
-      "Un générateur de portfolio automatique à partir de vos repos GitHub. Personnalisable et déployable en un clic.",
-    tags: ["Astro", "TypeScript", "GitHub API"],
-    githubUrl: "https://github.com",
+      "Application de gestion du calendrier du centre de conférences international d'Antananarivo.",
+    tags: ["Next.js", "TypeScript", "Google API", "Node.js"],
+    liveUrl: "https://calendrier.cci-api.com",
+    githubUrl: "https://github.com/raparisonbryan/cci-frontend.git",
+    isPrivate: false,
+    image: HomeCciImage.src,
+    context:
+      "Développement d'une application web pour gérer les réservations et le calendrier du centre de conférences, avec synchronisation automatique avec Google Calendar.",
+    challenges: [
+      "Intégration avec l'API Google Calendar pour la synchronisation bidirectionnelle",
+      "Gestion des conflits de réservation en temps réel",
+      "Interface responsive pour une utilisation sur mobile et desktop",
+      "Système de notifications pour les confirmations et rappels",
+    ],
+    result:
+      "Application déployée et utilisée quotidiennement, permettant une gestion efficace des réservations et une réduction de 30% des erreurs de double réservation.",
   },
   {
     id: "4",
-    title: "Weather Dashboard",
+    title: "AppAdvisor",
     description:
-      "Dashboard météo avec prévisions, cartes interactives et alertes personnalisées.",
-    tags: ["Vue.js", "D3.js", "OpenWeather API"],
-    liveUrl: "https://example.com",
+      "Site web de veille sur les outils informatiques, basé sur un système d'avis et de classement.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "Node.js"],
+    githubUrl: "https://github.com/raparisonbryan/App-Advisor-frontend.git",
+    isPrivate: false,
+    image: HomeAppAdvisorImage.src,
+    context:
+      "Plateforme communautaire permettant aux professionnels de découvrir, évaluer et partager des outils informatiques.",
+    challenges: [
+      "Mise en place d'un système de notation et de classement dynamique",
+      "Gestion de grandes quantités de données avec MongoDB",
+      "Création d'un algorithme de recommandation personnalisé",
+    ],
+    result:
+      "Plateforme fonctionnelle avec une base d'utilisateurs active, facilitant la découverte d'outils pour les développeurs et les entreprises.",
   },
   {
     id: "5",
-    title: "Real-time Chat Application",
+    title: "Ecos Alpha",
     description:
-      "Application de messagerie instantanée avec rooms, messages privés, partage de fichiers et indicateurs de présence.",
-    tags: ["React", "WebSocket", "Redis", "PostgreSQL"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+      "Site vitrine présentant l'application 'Ecos Alpha', visant à aider les étudiants en médecine à se préparer aux Examens Cliniques Objectifs Structurés (ECOS).",
+    tags: ["HTML", "CSS", "Javascript"],
+    liveUrl: "https://ecosalpha.fr",
+    isPrivate: false,
+    image: HomeEcosAlphaImage.src,
+    context:
+      "Création d'un site vitrine moderne et informatif pour présenter l'application Ecos Alpha aux étudiants en médecine.",
+    challenges: [
+      "Design responsive et accessible",
+      "Optimisation des performances pour un chargement rapide",
+      "Intégration de formulaires de contact fonctionnels",
+    ],
+    result:
+      "Site web performant et esthétique qui a contribué à augmenter la notoriété de l'application Ecos Alpha auprès des étudiants.",
   },
   {
     id: "6",
-    title: "AI Content Generator",
+    title: "Hopium",
     description:
-      "Outil de génération de contenu utilisant GPT-4 pour créer des articles, des descriptions produits et des posts réseaux sociaux.",
-    tags: ["Next.js", "OpenAI API", "Tailwind"],
-    liveUrl: "https://example.com",
+      "Site vitrine présentant Hopium, un fabricant français de systèmes de motorisation électrique à pile à combustible hydrogène pour les transports lourds.",
+    tags: ["Webflow", "Javascript"],
+    liveUrl: "https://hopium.com",
+    isPrivate: false,
+    image: HomeHopiumImage.src,
+    context:
+      "Développement d'un site vitrine premium pour présenter les innovations technologiques d'Hopium dans le domaine de l'hydrogène.",
+    challenges: [
+      "Création d'animations fluides et performantes",
+      "Intégration de contenus multimédias de haute qualité",
+      "Optimisation SEO pour améliorer la visibilité en ligne",
+    ],
+    result:
+      "Site web élégant et performant qui reflète l'image de marque premium d'Hopium et améliore l'engagement des visiteurs.",
+  },
+  {
+    id: "7",
+    title: "Villa Pakleni Hvar",
+    description:
+      "Site vitrine présentant la villa Pakleni, une villa de luxe située à Pakleni, à Hvar, en Croatie.",
+    tags: ["Wordpress", "Elementor"],
+    liveUrl: "https://villapaklenihvar.com/",
+    isPrivate: false,
+    image: HomeVillaPakleniHvarImage.src,
+    context:
+      "Création d'un site vitrine luxueux pour présenter la villa Pakleni et faciliter les réservations pour les clients internationaux.",
+    challenges: [
+      "Design premium reflétant le luxe de la villa",
+      "Intégration d'un système de réservation",
+      "Optimisation multilingue pour une audience internationale",
+    ],
+    result:
+      "Site web attractif qui a contribué à augmenter les réservations et à améliorer la visibilité de la villa sur le marché international.",
   },
 ];
 ---
@@ -70,20 +165,9 @@ const projects: Project[] = [
       <header class="page-header">
         <span class="page-label">Portfolio</span>
         <h1 class="page-title">Mes projets</h1>
-        <p class="page-description">
-          Une sélection de projets sur lesquels j'ai travaillé. Chaque projet
-          représente un défi unique et une opportunité d'apprendre de nouvelles
-          technologies.
-        </p>
       </header>
 
-      <div class="projects-grid">
-        {
-          projects.map((project, index) => (
-            <ProjectCard project={project} index={index} client:visible />
-          ))
-        }
-      </div>
+      <ProjectsView projects={projects} initialProjectId={initialProjectId} client:load />
     </div>
   </section>
 </BaseLayout>

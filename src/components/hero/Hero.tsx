@@ -85,7 +85,7 @@ export default function Hero({
       >
         <motion.span className={styles.badge} variants={itemVariants}>
           <span className={styles.dot} />
-          Disponible pour de nouveaux projets
+          Disponible pour de nouvelles opportunités
         </motion.span>
 
         <motion.p className={styles.subtitle} variants={itemVariants}>
