@@ -5,18 +5,18 @@ import { AboutHero } from "@/components/about/AboutHero";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import "@styles/pages/about.scss";
 import AboutImage from "@assets/images/profile.jpg";
-import hobbyOpenSource from "@assets/images/hobbies/open-source.jpg";
-import hobbyLecture from "@assets/images/hobbies/lecture.jpg";
-import hobbyMusique from "@assets/images/hobbies/musique.jpg";
-import hobbyRandonnee from "@assets/images/hobbies/randonnee.jpg";
-import hobbyVeilleTech from "@assets/images/hobbies/veille-tech.jpg";
+import hobbyFootball from "@assets/images/hobbies/football.png";
+import hobbyAutomobile from "@assets/images/hobbies/auto.png";
+import hobbyMusique from "@assets/images/hobbies/musique.png";
+import hobbyVoyage from "@assets/images/hobbies/voyage.png";
+import hobbyTennis from "@assets/images/hobbies/tennis.png";
 
 const hobbies = [
-  { label: "Football", image: hobbyOpenSource },
-  { label: "Sport automobile", image: hobbyLecture },
+  { label: "Football", image: hobbyFootball },
+  { label: "Sport automobile", image: hobbyAutomobile },
   { label: "Musique", image: hobbyMusique },
-  { label: "Voyages", image: hobbyRandonnee },
-  { label: "Tennis", image: hobbyVeilleTech },
+  { label: "Voyages", image: hobbyVoyage },
+  { label: "Tennis", image: hobbyTennis },
 ];
 
 <BaseLayout
@@ -53,4 +53,5 @@ const hobbies = [
       <AboutTimeline client:visible />
     </div>
   </section>
-</BaseLayout>
+</BaseLayout>;
+---
