@@ -8,6 +8,37 @@
   @include container;
 }
 
+.about-first-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+  grid-template-areas:
+    'header'
+    'image'
+    'subtitle'
+    'text'
+    'stats';
+
+  @include lg {
+    grid-template-columns: 350px 1fr;
+    grid-template-areas:
+      'header header'
+      'image subtitle'
+      'image text'
+      'image stats';
+  }
+
+  @media (max-width: 768px) {
+    gap: $space-8;
+  }
+}
+
+.about-stagger-header { grid-area: header; }
+.about-stagger-image { grid-area: image; }
+.about-stagger-subtitle { grid-area: subtitle; }
+.about-stagger-text { grid-area: text; }
+.about-stagger-stats { grid-area: stats; }
+
 .page-header {
   text-align: center;
   margin-bottom: $space-16;
@@ -36,48 +67,26 @@
   color: var(--text-primary);
 }
 
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-12;
-  align-items: start;
-
-  @include lg {
-    grid-template-columns: 350px 1fr;
-  }
-}
-
 .about-image {
   position: sticky;
   top: $space-24;
-}
-
-.image-placeholder {
-  aspect-ratio: 1;
-  max-width: 350px;
-  margin: 0 auto;
-  @include flex-center;
-  background: var(--gradient-hero);
   border: 1px solid var(--border-primary);
   border-radius: $radius-2xl;
-  color: var(--text-tertiary);
+  overflow: hidden;
 }
 
-.about-text {
-  h2 {
-    @include heading-sm;
-    color: var(--text-primary);
-    margin-bottom: $space-6;
-  }
+.about-subtitle {
+  @include heading-sm;
+  color: var(--text-primary);
+}
 
-  p {
-    @include body-lg;
-    color: var(--text-secondary);
-    margin-bottom: $space-4;
+.about-paragraphs p {
+  @include body-lg;
+  color: var(--text-secondary);
+  margin-bottom: $space-4;
 
-    &:last-of-type {
-      margin-bottom: $space-8;
-    }
+  &:last-of-type {
+    margin-bottom: $space-8;
   }
 }
 
@@ -108,6 +117,66 @@
   color: var(--text-tertiary);
 }
 
+// --- Hobbies ---
+.hobbies-section {
+  padding: $space-24 0;
+}
+
+.hobbies-label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $space-4;
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include sm {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.hobby-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.hobby-card__image {
+  aspect-ratio: 1;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.hobby-card__label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+// --- Experience section ---
 .experience-section {
   padding: $space-24 0;
   background: var(--bg-secondary);
@@ -120,6 +189,7 @@
   margin-bottom: $space-16;
 }
 
+// --- Timeline ---
 .timeline {
   max-width: 700px;
   margin: 0 auto;
@@ -169,17 +239,55 @@
 
 .timeline-content {
   @include card;
+
+  &:hover {
+    border-color: var(--border-secondary);
+    box-shadow: none;
+  }
+}
+
+.timeline-date-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-2;
 }
 
 .timeline-date {
-  display: inline-block;
   padding: $space-1 $space-2;
   background: var(--surface-secondary);
   border-radius: $radius-sm;
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: var(--text-tertiary);
-  margin-bottom: $space-2;
+}
+
+.timeline-badge {
+  padding: $space-1 $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  letter-spacing: $letter-spacing-wider;
+
+  &--formation {
+    background: var(--color-accent-100);
+    color: var(--color-accent-700);
+
+    [data-theme='dark'] & {
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--color-accent-400);
+    }
+  }
+
+  &--experience {
+    background: var(--color-brand-100);
+    color: var(--color-brand-700);
+
+    [data-theme='dark'] & {
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--color-brand-400);
+    }
+  }
 }
 
 .timeline-title {
@@ -200,5 +308,3 @@
   @include body-base;
   color: var(--text-secondary);
 }
-
-
