@@ -18,6 +18,7 @@ const hobbies = [
   { label: "Voyages", image: hobbyVoyage },
   { label: "Tennis", image: hobbyTennis },
 ];
+---
 
 <BaseLayout
   title="À propos | Bryan - Développeur Full Stack"
@@ -31,9 +32,22 @@ const hobbies = [
 
   <Skills client:visible />
 
+  <section class="experience-section">
+    <div class="container">
+      <div class="page-header">
+        <span class="page-label">Parcours</span>
+        <h2 class="section-title">Mon parcours</h2>
+      </div>
+      <AboutTimeline client:visible />
+    </div>
+  </section>
+
   <section class="hobbies-section">
     <div class="container">
-      <h2 class="section-title">Hobbies & passions</h2>
+      <div class="page-header">
+        <span class="page-label">Hobbies</span>
+        <h2 class="section-title">Hobbies & passions</h2>
+      </header>
       <ul class="hobbies-grid">
         {hobbies.map(({ label, image }) => (
           <li class="hobby-card">
@@ -44,13 +58,6 @@ const hobbies = [
           </li>
         ))}
       </ul>
-    </div>
-  </section>
-
-  <section class="experience-section">
-    <div class="container">
-      <h2 class="section-title">Mon parcours</h2>
-      <AboutTimeline client:visible />
     </div>
   </section>
 </BaseLayout>;

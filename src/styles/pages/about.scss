@@ -27,6 +27,10 @@
       'image text'
       'image stats';
   }
+
+  @media (max-width: 768px) {
+    gap: $space-8;
+  }
 }
 
 .about-stagger-header { grid-area: header; }
@@ -74,7 +78,6 @@
 .about-subtitle {
   @include heading-sm;
   color: var(--text-primary);
-  margin-bottom: $space-6;
 }
 
 .about-paragraphs p {
