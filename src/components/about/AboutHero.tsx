@@ -23,11 +23,11 @@ const itemVariants: Variants = {
   },
 };
 
-interface AboutFirstSectionProps {
+interface AboutHeroProps {
   imageSrc: string;
 }
 
-export function AboutFirstSection({ imageSrc }: AboutFirstSectionProps) {
+export function AboutHero({ imageSrc }: AboutHeroProps) {
   return (
     <motion.div
       className="about-first-section"
@@ -50,29 +50,29 @@ export function AboutFirstSection({ imageSrc }: AboutFirstSectionProps) {
       </motion.div>
 
       <motion.div className="about-stagger-subtitle" variants={itemVariants}>
-        <h2 className="about-subtitle">Développeur passionné par le web</h2>
+        <h2 className="about-subtitle">Développeur web (presque) adulte</h2>
       </motion.div>
 
       <motion.div className="about-stagger-text" variants={itemVariants}>
         <div className="about-paragraphs">
           <p>
-            Bonjour ! Je suis Bryan, développeur Full Stack basé en France.
-            Depuis plus de 5 ans, je conçois et développe des applications web
-            modernes, en mettant l'accent sur l'expérience utilisateur et la
-            qualité du code.
+            Bonjour, moi c'est Bryan ! Développeur Full Stack junior, je conçois des applications et 
+            des sites web.
           </p>
           <p>
-            Mon parcours m'a permis de travailler sur des projets variés : des
-            startups innovantes aux grandes entreprises, en passant par des
-            projets personnels ambitieux. Cette diversité m'a appris à m'adapter
-            rapidement et à trouver les solutions les plus adaptées à chaque
-            contexte.
+            Je recherche aujourd'hui un poste de développeur web, dans un environnement 
+            stimulant et challengeant, où je pourrai continuer à apprendre, progresser et 
+            m'investir sur des projets concrets.
           </p>
           <p>
-            Quand je ne code pas, vous me trouverez probablement en train
-            d'explorer les dernières technologies, de contribuer à des projets
-            open source, ou de partager mes connaissances à travers des articles
-            techniques.
+            Je code depuis environ 5 ans et j'ai acquis 3 ans d'expérience en entreprise à 
+            travers l'alternance. Cette période m'a appris à être autonome, persévérant et 
+            résilient parce qu'en développement, il y a toujours des problèmes, et c'est 
+            aussi ce qui rend le métier intéressant.
+          </p>
+          <p>
+            J'avance avec une conviction simple : on progresse vraiment quand on aime ce qu'on fait, 
+            et quand on prend le temps de bien le faire.
           </p>
         </div>
       </motion.div>
@@ -80,16 +80,16 @@ export function AboutFirstSection({ imageSrc }: AboutFirstSectionProps) {
       <motion.div className="about-stagger-stats" variants={itemVariants}>
         <div className="about-stats">
           <div className="stat">
-            <span className="stat-value">5+</span>
-            <span className="stat-label">Années d'expérience</span>
+            <span className="stat-value">3 ans</span>
+            <span className="stat-label">Expérience en entreprise</span>
           </div>
           <div className="stat">
-            <span className="stat-value">50+</span>
-            <span className="stat-label">Projets réalisés</span>
+            <span className="stat-value">5 ans</span>
+            <span className="stat-label">Pratique du développement</span>
           </div>
           <div className="stat">
-            <span className="stat-value">20+</span>
-            <span className="stat-label">Clients satisfaits</span>
+            <span className="stat-value">100%</span>
+            <span className="stat-label">Motivation</span>
           </div>
         </div>
       </motion.div>

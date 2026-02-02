@@ -25,25 +25,38 @@ const itemVariants: Variants = {
 
 const timelineItems = [
   {
-    date: '2023 - Présent',
-    title: 'Développeur Full Stack Senior',
-    company: 'Entreprise Tech',
+    date: '2023 - 2026',
+    type: 'experience' as const,
+    title: 'Développeur web - Alternance et CDD',
+    company: 'We Made Ya',
     description:
-      "Lead technique sur des projets React/Node.js. Mise en place d'architectures scalables et mentorat de développeurs juniors.",
+      "Développement de sites web et d'applications pour des projets clients. Participation au développement d'un intranet et mise en place de pipelines CI/CD."
   },
   {
-    date: '2021 - 2023',
-    title: 'Développeur Front-end',
-    company: 'Startup Innovation',
-    description:
-      "Développement d'interfaces utilisateur complexes avec React et TypeScript. Optimisation des performances et mise en place de tests automatisés.",
+    date: '2023 - 2025',
+    type: 'formation' as const,
+    title: 'Mastère Expert en Développement Web',
+    company: 'Lyon Ynov Campus',
   },
   {
-    date: '2019 - 2021',
-    title: 'Développeur Web Junior',
-    company: 'Agence Digitale',
+    date: '2022 - 2023',
+    type: 'formation' as const,
+    title: 'Bachelor Informatique',
+    company: 'Lyon Ynov Campus',
+  },
+  {
+    date: '2022',
+    type: 'experience' as const,
+    title: "Stage de fin d'études - Développement web",
+    company: 'CNRS / LTDS',
     description:
-      "Création de sites web et d'applications pour divers clients. Apprentissage des bonnes pratiques et méthodologies agiles.",
+      "Création d'un site web en React pour un laboratoire de recherche. Travail en binôme avec organisation de projet. Intégration de contenus techniques (Python, LaTeX)."
+  },
+  {
+    date: '2020 - 2022',
+    type: 'formation' as const,
+    title: 'DUT Informatique',
+    company: 'IUT Lyon 1',
   },
 ];
 
@@ -57,13 +70,18 @@ export function AboutTimeline() {
       viewport={{ once: true, margin: '-50px' }}
     >
       {timelineItems.map((item) => (
-        <motion.div key={item.date} className="timeline-item" variants={itemVariants}>
+        <motion.div key={`${item.date}-${item.title}`} className="timeline-item" variants={itemVariants}>
           <div className="timeline-marker" />
           <div className="timeline-content">
-            <span className="timeline-date">{item.date}</span>
+            <div className="timeline-date-row">
+              <span className="timeline-date">{item.date}</span>
+              <span className={`timeline-badge timeline-badge--${item.type}`}>
+                {item.type === 'formation' ? 'Formation' : 'Expérience'}
+              </span>
+            </div>
             <h3 className="timeline-title">{item.title}</h3>
             <p className="timeline-company">{item.company}</p>
-            <p className="timeline-description">{item.description}</p>
+            {item.description && <p className="timeline-description">{item.description}</p>}
           </div>
         </motion.div>
       ))}

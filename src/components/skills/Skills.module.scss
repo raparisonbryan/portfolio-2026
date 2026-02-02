@@ -60,6 +60,11 @@
 
 .category {
   @include card;
+
+  &:hover {
+    border-color: var(--border-secondary);
+    box-shadow: none;
+  }
 }
 
 .categoryTitle {

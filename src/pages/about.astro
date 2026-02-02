@@ -1,11 +1,23 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Skills from "@components/skills/Skills";
-import { AboutFirstSection } from "@/components/about/AboutFirstSection";
+import { AboutHero } from "@/components/about/AboutHero";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import "@styles/pages/about.scss";
 import AboutImage from "@assets/images/profile.jpg";
----
+import hobbyOpenSource from "@assets/images/hobbies/open-source.jpg";
+import hobbyLecture from "@assets/images/hobbies/lecture.jpg";
+import hobbyMusique from "@assets/images/hobbies/musique.jpg";
+import hobbyRandonnee from "@assets/images/hobbies/randonnee.jpg";
+import hobbyVeilleTech from "@assets/images/hobbies/veille-tech.jpg";
+
+const hobbies = [
+  { label: "Football", image: hobbyOpenSource },
+  { label: "Sport automobile", image: hobbyLecture },
+  { label: "Musique", image: hobbyMusique },
+  { label: "Voyages", image: hobbyRandonnee },
+  { label: "Tennis", image: hobbyVeilleTech },
+];
 
 <BaseLayout
   title="À propos | Bryan - Développeur Full Stack"
@@ -13,11 +25,27 @@ import AboutImage from "@assets/images/profile.jpg";
 >
   <section class="about-page">
     <div class="container">
-      <AboutFirstSection client:visible imageSrc={AboutImage.src} />
+      <AboutHero client:visible imageSrc={AboutImage.src} />
     </div>
   </section>
 
   <Skills client:visible />
+
+  <section class="hobbies-section">
+    <div class="container">
+      <h2 class="section-title">Hobbies & passions</h2>
+      <ul class="hobbies-grid">
+        {hobbies.map(({ label, image }) => (
+          <li class="hobby-card">
+            <div class="hobby-card__image">
+              <img src={image.src} alt={label} loading="lazy" />
+            </div>
+            <span class="hobby-card__label">{label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
   <section class="experience-section">
     <div class="container">
