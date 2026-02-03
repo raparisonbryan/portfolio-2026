@@ -16,7 +16,7 @@ import ImgWereviewImage from "@assets/images/img_wereview.png";
 import ImgAppAdvisorImage1 from "@assets/images/img_appadvisor_1.png";
 import ImgAppAdvisorImage2 from "@assets/images/img_appadvisor_2.png";
 
-const initialProjectId = Astro.url.searchParams.get('project') ?? "1";
+const initialProjectId = Astro.url.searchParams.get('project') ?? null;
 const projects: Project[] = [
   {
     id: "1",
