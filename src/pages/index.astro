@@ -9,11 +9,10 @@ import "@styles/pages/home.scss";
 import HomeIntranetImage from "@assets/images/home_intranet.png";
 import HomeWereviewImage from "@assets/images/home_wereview.png";
 import HomeCciImage from "@assets/images/home_cci.png";
-import HomeAppAdvisorImage from "@assets/images/home_appadvisor.png";
 import Button from "@/components/button/Button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import CVDownload from "@/components/cv-download/CVDownload";
-import ProjectCTA from "@/components/project-cta/ProjectCTA";
+import { BackpackIcon } from "@radix-ui/react-icons";
 
 const featuredProjects: Project[] = [
   {
@@ -62,7 +61,7 @@ const featuredProjects: Project[] = [
         <span class="section-label">Portfolio</span>
         <h2 class="section-title">Projets récents</h2>
         <p class="section-description">
-          Voici une sélection de projets sur lesquels j’ai contribué récemment.
+          Voici une sélection de projets sur lesquels j'ai contribué récemment.
         </p>
       </div>
 
@@ -74,7 +73,11 @@ const featuredProjects: Project[] = [
         }
       </div> 
       
-      <ProjectCTA client:load />
+      <div class="projets-cta">
+        <Button client:load title="Voir tous mes projets" href="/projects">
+          <BackpackIcon />
+        </Button>
+      </div>
     </div>
   </section>
 
@@ -89,7 +92,7 @@ const featuredProjects: Project[] = [
           à progresser et participer au développement de produits web de qualité.
         </p>
         <div class="cta-buttons">
-          <Button title="Discutons ensemble" onClick={() => window.location.href = '/contact'}>
+          <Button client:load title="Discutons ensemble" href="/contact">
             <ArrowRightIcon />
           </Button>
           <CVDownload client:load />
