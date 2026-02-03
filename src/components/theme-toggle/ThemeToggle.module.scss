@@ -1,20 +1,23 @@
 @use '../../styles/design-system' as *;
 
-.toggle {
+.toggle,
+.togglePlaceholder {
   @include flex-center;
-  width: 44px;
-  height: 44px;
-  background: var(--surface-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: $radius-lg;
-  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.toggle {
+  background: transparent;
+  border: 1px solid var(--border-brand);
+  border-radius: $radius-md;
+  color: var(--border-brand);
   cursor: pointer;
   transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
   &:hover {
-    background: var(--interactive-hover);
-    border-color: var(--border-secondary);
-    color: var(--text-primary);
+    background: var(--surface-brand-subtle);
   }
 
   &:focus-visible {
@@ -22,15 +25,18 @@
   }
 }
 
+.togglePlaceholder {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .placeholder {
-  width: 20px;
-  height: 20px;
-  background: var(--border-primary);
-  border-radius: $radius-full;
+  width: 16px;
+  height: 16px;
 }
 

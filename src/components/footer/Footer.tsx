@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com',
+    href: 'https://github.com/raparisonbryan',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -19,7 +19,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://linkedin.com/in/bryan-raparison',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -41,23 +41,8 @@ const socialLinks = [
     ),
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M22 4.01C21 4.5 20.02 4.69 19 5C17.879 3.735 16.217 3.665 14.62 4.263C13.023 4.861 11.977 6.323 12 8.01V9.01C8.755 9.081 5.865 7.605 4 5.01C4 5.01 -0.182 12.94 8 17.01C5.94 18.408 3.88 19.273 1 19.01C5.08 21.354 9.27 22.131 12.99 20.948C17.279 19.578 20.629 15.878 21.76 10.748C22.0139 9.58957 22.1396 8.40612 22.135 7.22C22.133 6.85 22.969 4.81 22 4.01Z"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
     name: 'Email',
-    href: 'mailto:hello@example.com',
+    href: 'mailto:raparisonbryan@yahoo.fr',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -83,11 +68,11 @@ export default function Footer() {
           <div className={styles.brand}>
             <a href="/" className={styles.logo}>
               <span className={styles.logoAccent}>{'<'}</span>
-              Dev
+              Bryan
               <span className={styles.logoAccent}>{'/>'}</span>
             </a>
             <p className={styles.tagline}>
-              Développeur Full Stack passionné par la création d'expériences web exceptionnelles.
+              Développeur web full stack junior, basé en France.
             </p>
           </div>
 
@@ -113,8 +98,6 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
                   aria-label={link.name}
                 >
                   {link.icon}
@@ -126,13 +109,11 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} Bryan. Tous droits réservés.
+            © {currentYear} Bryan Raparison. Tous droits réservés.
           </p>
           <p className={styles.credit}>
             Construit avec{' '}
-            <span className={styles.heart}>♥</span>{' '}
-            using <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> &{' '}
-            <a href="https://react.dev" target="_blank" rel="noopener noreferrer">React</a>
+            <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
           </p>
         </div>
       </div>

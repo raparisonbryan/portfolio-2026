@@ -48,6 +48,10 @@
   border-radius: $radius-full;
   font-size: $font-size-sm;
   color: var(--text-secondary);
+
+  @media screen and (max-width: 768px) {
+    padding: $space-1 $space-3;
+  }
 }
 
 .dot {
@@ -84,6 +88,10 @@
 .name {
   @include heading-xl;
   @include gradient-text;
+
+  @media screen and (max-width: 768px) {
+    @include heading-lg;
+  }
 }
 
 .role {

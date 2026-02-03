@@ -1,5 +1,9 @@
 @use '../../styles/design-system' as *;
 
+.animatedBlock {
+  width: 100%;
+}
+
 .container {
   display: flex;
   width: 100%;
@@ -73,4 +77,13 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: 999;
   backdrop-filter: blur(4px);
+}
+
+.viewportPlaceholder {
+  min-height: 60vh;
+  width: 100%;
+
+  @include lg {
+    min-height: calc(100vh - 200px);
+  }
 }
