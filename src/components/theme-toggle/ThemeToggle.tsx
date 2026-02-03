@@ -31,19 +31,6 @@ export default function ThemeToggle() {
   useEffect(() => {
     setMounted(true);
     setThemeState(getTheme());
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e: MediaQueryListEvent) => {
-      const stored = localStorage.getItem('portfolio-theme');
-      if (!stored) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        setTheme(newTheme);
-        setThemeState(newTheme);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   const handleToggle = () => {

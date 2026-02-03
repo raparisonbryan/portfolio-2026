@@ -12,7 +12,7 @@ const expertises = [
   {
     name: 'Applications web',
     description:
-      "Développement d’applications web complètes, avec gestion des utilisateurs, base de données et logique métier.",
+      "Développement d'applications web complètes, avec gestion des utilisateurs, base de données et logique métier.",
     icon: AppWebIcon,
   },
   {
@@ -24,7 +24,7 @@ const expertises = [
   {
     name: 'Outils métiers',
     description:
-      "Conception d’outils sur mesure pour simplifier, automatiser et optimiser les processus internes.",
+      "Conception d'outils sur mesure pour simplifier, automatiser et optimiser les processus internes.",
     icon: OutilMetierIcon,
   },
   {

@@ -36,6 +36,12 @@ export default function ProjectsView({ projects, initialProjectId = null }: Proj
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    if (selectedProjectId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [selectedProjectId]);
+
   const selectedProject = selectedProjectId
     ? projects.find((p) => p.id === selectedProjectId)
     : null;
@@ -48,14 +54,13 @@ export default function ProjectsView({ projects, initialProjectId = null }: Proj
     setSelectedProjectId(null);
   };
 
-  // Ne pas afficher le layout avant de connaître le viewport (évite le flash desktop sur mobile)
   if (!hasCheckedViewport) {
     return <div className={styles.viewportPlaceholder} aria-hidden />;
   }
 
   const blockTransition = {
     duration: 0.5,
-    ease: [0.25, 0.46, 0.45, 0.94],
+    ease: [0.25, 0.46, 0.45, 0.94] as const,
   };
 
   if (isMobile) {
