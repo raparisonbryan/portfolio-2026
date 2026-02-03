@@ -162,6 +162,10 @@
     border-color: var(--border-secondary);
     box-shadow: $shadow-md;
   }
+
+  @media (max-width: 768px) {
+    padding: $space-4;
+  }
 }
 
 @mixin button-base {
