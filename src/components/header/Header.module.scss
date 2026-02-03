@@ -22,6 +22,8 @@
 }
 
 .nav {
+  position: relative;
+  z-index: 1;
   @include container;
   @include flex-between;
   gap: $space-6;
@@ -94,11 +96,11 @@
 
 .menuButton {
   @include flex-center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   background: var(--surface-secondary);
   border: 1px solid var(--border-primary);
-  border-radius: $radius-lg;
+  border-radius: $radius-md;
   cursor: pointer;
   transition: background-color $transition-fast;
 
@@ -117,8 +119,8 @@
 
 .menuIcon {
   position: relative;
-  width: 20px;
-  height: 14px;
+  width: 16px;
+  height: 12px;
 
   span {
     position: absolute;
@@ -162,9 +164,18 @@
 }
 
 .mobileMenu {
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: $z-fixed - 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--bg-primary);
-  border-top: 1px solid var(--border-primary);
+  padding-top: 5rem;
 
   @include lg {
     display: none;
@@ -175,7 +186,9 @@
   @include container;
   display: flex;
   flex-direction: column;
-  gap: $space-2;
+  justify-content: center;
+  gap: $space-4;
+  flex: 1;
   padding-block: $space-6;
 }
 

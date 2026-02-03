@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from '@components/button/Button';
 import styles from './ContactForm.module.scss';
 
 interface FormData {
@@ -19,6 +20,7 @@ export default function ContactForm() {
     message: '',
   });
   const [status, setStatus] = useState<FormStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleChange = (
@@ -31,18 +33,31 @@ export default function ContactForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
+    setErrorMessage('');
 
-    // TODO: Remplacer par vraie API
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json().catch(() => ({}));
 
-    setStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setStatus('idle'), 3000);
-  };
+      if (!res.ok) {
+        setStatus('error');
+        setErrorMessage(data.error || 'Une erreur est survenue.');
+        setTimeout(() => setStatus('idle'), 4000);
+        return;
+      }
 
-  const inputVariants = {
-    focus: { scale: 1.01 },
-    blur: { scale: 1 },
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch {
+      setStatus('error');
+      setErrorMessage('Impossible de joindre le serveur. Réessayez plus tard.');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (
@@ -57,7 +72,6 @@ export default function ContactForm() {
       <div className={styles.row}>
         <motion.div
           className={styles.field}
-          variants={inputVariants}
           animate={focusedField === 'name' ? 'focus' : 'blur'}
         >
           <label htmlFor="name" className={styles.label}>
@@ -79,7 +93,6 @@ export default function ContactForm() {
 
         <motion.div
           className={styles.field}
-          variants={inputVariants}
           animate={focusedField === 'email' ? 'focus' : 'blur'}
         >
           <label htmlFor="email" className={styles.label}>
@@ -102,7 +115,6 @@ export default function ContactForm() {
 
       <motion.div
         className={styles.field}
-        variants={inputVariants}
         animate={focusedField === 'subject' ? 'focus' : 'blur'}
       >
         <label htmlFor="subject" className={styles.label}>
@@ -124,7 +136,6 @@ export default function ContactForm() {
 
       <motion.div
         className={styles.field}
-        variants={inputVariants}
         animate={focusedField === 'message' ? 'focus' : 'blur'}
       >
         <label htmlFor="message" className={styles.label}>
@@ -144,13 +155,23 @@ export default function ContactForm() {
         />
       </motion.div>
 
+      {status === 'error' && errorMessage && (
+        <motion.p
+          className={styles.errorMessage}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          role="alert"
+        >
+          {errorMessage}
+        </motion.p>
+      )}
+
       <div className={styles.actions}>
-        <motion.button
+        <Button
           type="submit"
-          className={styles.submitButton}
+          variant="primary"
           disabled={status === 'submitting'}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          className={styles.submitButton}
         >
           <AnimatePresence mode="wait">
             {status === 'submitting' ? (
@@ -167,11 +188,11 @@ export default function ContactForm() {
             ) : status === 'success' ? (
               <motion.span
                 key="success"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                ✓ Message envoyé !
+                Message envoyé !
               </motion.span>
             ) : (
               <motion.span
@@ -181,25 +202,10 @@ export default function ContactForm() {
                 exit={{ opacity: 0 }}
               >
                 Envoyer le message
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
               </motion.span>
             )}
           </AnimatePresence>
-        </motion.button>
+        </Button>
       </div>
     </motion.form>
   );

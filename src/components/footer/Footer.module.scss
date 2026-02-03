@@ -93,11 +93,11 @@
 
 .socialLink {
   @include flex-center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: var(--surface-primary);
   border: 1px solid var(--border-primary);
-  border-radius: $radius-lg;
+  border-radius: $radius-md;
   color: var(--text-secondary);
   transition: border-color $transition-fast, color $transition-fast;
 
@@ -107,8 +107,8 @@
   }
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 }
 
