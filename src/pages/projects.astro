@@ -10,30 +10,35 @@ import HomeAppAdvisorImage from "@assets/images/home_appadvisor.png";
 import HomeEcosAlphaImage from "@assets/images/home_ecos.png";
 import HomeHopiumImage from "@assets/images/home_hopium.png";
 import HomeVillaPakleniHvarImage from "@assets/images/home_pakleni.png";
+import ImgIntranetImage1 from "@assets/images/img_intranet_1.png";
+import ImgIntranetImage2 from "@assets/images/img_intranet_2.png";
+import ImgWereviewImage from "@assets/images/img_wereview.png";
+import ImgAppAdvisorImage1 from "@assets/images/img_appadvisor_1.png";
+import ImgAppAdvisorImage2 from "@assets/images/img_appadvisor_2.png";
 
-const initialProjectId = Astro.url.searchParams.get('project') ?? null;
+const initialProjectId = Astro.url.searchParams.get('project') ?? "1";
 const projects: Project[] = [
   {
     id: "1",
     title: "Intranet We Made Ya",
     description:
-      "Plateforme interne pour la société We Made Ya, permettant la gestion des commandes de spot audio et vidéo.",
+      "Refonte et modernisation de l'intranet de l'agence We Made Ya, destiné à la gestion des commandes de spots audio et vidéo.",
     tags: ["Next.js", "TypeScript", "GraphQL", "AWS S3"],
     featured: true,
     liveUrl: "https://intranet.wmy.fr",
     githubUrl: "https://github.com/wemadeya/intranet-frontend",
     isPrivate: true,
     image: HomeIntranetImage.src,
+    image2: ImgIntranetImage1.src,
+    image3: ImgIntranetImage2.src,
     context:
-      "Développement d'une plateforme interne pour gérer l'ensemble du workflow de production de spots publicitaires, de la commande client à la livraison finale.",
+      "L'agence disposait d'un intranet interne vieillissant, développé il y a une dizaine d'années. L'objectif était de concevoir une nouvelle plateforme plus moderne et performante, tout en centralisant l'ensemble des étapes de production.",
     challenges: [
       "Gestion de fichiers volumineux (vidéos, audios) avec upload vers AWS S3",
-      "Mise en place d'un système de notifications en temps réel",
+      "Utilisation de React Query pour la gestion des données",
       "Optimisation des performances pour gérer de grandes quantités de données",
-      "Intégration complexe avec GraphQL et gestion du cache",
+      "Transformation de la base MySQL en GraphQL avec Hasura",
     ],
-    result:
-      "Plateforme opérationnelle permettant de réduire le temps de traitement des commandes de 40% et d'améliorer significativement la traçabilité des projets.",
   },
   {
     id: "2",
@@ -45,16 +50,14 @@ const projects: Project[] = [
     githubUrl: "https://github.com/wemadeya/machine-reviser",
     isPrivate: true,
     image: HomeWereviewImage.src,
+    image2: ImgWereviewImage.src,
     context:
       "Création d'une plateforme collaborative permettant aux clients de We Made Ya de réviser et annoter leurs projets vidéo et textes en temps réel.",
     challenges: [
-      "Implémentation d'un système d'annotations vidéo précis avec synchronisation temporelle",
+      "Implémentation d'un système d'annotations vidéo avec synchronisation temporelle (timecode)",
       "Gestion des permissions et des rôles utilisateurs",
-      "Optimisation du streaming vidéo pour une lecture fluide",
-      "Interface utilisateur intuitive pour faciliter les retours clients",
+      "Implémentation d'un système de notifications par mail",
     ],
-    result:
-      "Solution qui a permis de réduire de 50% le temps de révision des projets et d'améliorer la satisfaction client grâce à un processus plus transparent.",
   },
   {
     id: "3",
@@ -67,15 +70,12 @@ const projects: Project[] = [
     isPrivate: false,
     image: HomeCciImage.src,
     context:
-      "Développement d'une application web pour gérer les réservations et le calendrier du centre de conférences, avec synchronisation automatique avec Google Calendar.",
+      "Développement d'une application web pour gérer le calendrier du centre de conférences.",
     challenges: [
-      "Intégration avec l'API Google Calendar pour la synchronisation bidirectionnelle",
+      "Intégration avec l'API Google pour utiliser sheets comme base de données",
       "Gestion des conflits de réservation en temps réel",
       "Interface responsive pour une utilisation sur mobile et desktop",
-      "Système de notifications pour les confirmations et rappels",
     ],
-    result:
-      "Application déployée et utilisée quotidiennement, permettant une gestion efficace des réservations et une réduction de 30% des erreurs de double réservation.",
   },
   {
     id: "4",
@@ -86,15 +86,15 @@ const projects: Project[] = [
     githubUrl: "https://github.com/raparisonbryan/App-Advisor-frontend.git",
     isPrivate: false,
     image: HomeAppAdvisorImage.src,
+    image2: ImgAppAdvisorImage1.src,
+    image3: ImgAppAdvisorImage2.src,
     context:
-      "Plateforme communautaire permettant aux professionnels de découvrir, évaluer et partager des outils informatiques.",
+      "Application permettant aux utilisateurs de mettre des avis afin d'avoir un système de classement des outils web, comptant pour un projet de fin d'études.",
     challenges: [
       "Mise en place d'un système de notation et de classement dynamique",
-      "Gestion de grandes quantités de données avec MongoDB",
-      "Création d'un algorithme de recommandation personnalisé",
+      "Utilisation de React Query pour la gestion des données",
+      "Création d'algorithmes de statistiques",
     ],
-    result:
-      "Plateforme fonctionnelle avec une base d'utilisateurs active, facilitant la découverte d'outils pour les développeurs et les entreprises.",
   },
   {
     id: "5",
@@ -108,12 +108,10 @@ const projects: Project[] = [
     context:
       "Création d'un site vitrine moderne et informatif pour présenter l'application Ecos Alpha aux étudiants en médecine.",
     challenges: [
-      "Design responsive et accessible",
-      "Optimisation des performances pour un chargement rapide",
-      "Intégration de formulaires de contact fonctionnels",
+      "Design responsive et morderne",
+      "Optimisation SEO pour améliorer la visibilité en ligne",
+      "Intégration d'un simulateur de classement aux ECOS",
     ],
-    result:
-      "Site web performant et esthétique qui a contribué à augmenter la notoriété de l'application Ecos Alpha auprès des étudiants.",
   },
   {
     id: "6",
@@ -125,14 +123,13 @@ const projects: Project[] = [
     isPrivate: false,
     image: HomeHopiumImage.src,
     context:
-      "Développement d'un site vitrine premium pour présenter les innovations technologiques d'Hopium dans le domaine de l'hydrogène.",
+      "Développement d'un site vitrine sobre mais moderne pour présenter Hopium.",
     challenges: [
       "Création d'animations fluides et performantes",
-      "Intégration de contenus multimédias de haute qualité",
+      "Intégration via Webflow",
       "Optimisation SEO pour améliorer la visibilité en ligne",
+      "Utilisation d'nu CMS pour gérer les médias et les informations financières",
     ],
-    result:
-      "Site web élégant et performant qui reflète l'image de marque premium d'Hopium et améliore l'engagement des visiteurs.",
   },
   {
     id: "7",
@@ -144,14 +141,11 @@ const projects: Project[] = [
     isPrivate: false,
     image: HomeVillaPakleniHvarImage.src,
     context:
-      "Création d'un site vitrine luxueux pour présenter la villa Pakleni et faciliter les réservations pour les clients internationaux.",
+      "Création d'un site vitrine luxueux pour présenter la villa Pakleni et l'île de Hvar.",
     challenges: [
-      "Design premium reflétant le luxe de la villa",
-      "Intégration d'un système de réservation",
-      "Optimisation multilingue pour une audience internationale",
+      "Design reflétant le luxe de la villa",
+      "Intégration via Wordpress et Elementor",
     ],
-    result:
-      "Site web attractif qui a contribué à augmenter les réservations et à améliorer la visibilité de la villa sur le marché international.",
   },
 ];
 ---

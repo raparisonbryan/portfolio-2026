@@ -5,16 +5,11 @@ export const themeInitScript = `
   const LIGHT = 'light';
 
   function getInitialTheme() {
-    // Priorité: localStorage > prefers-color-scheme > light
+    // Priorité: localStorage > light (thème de base blanc)
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === DARK || stored === LIGHT) {
       return stored;
     }
-
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return DARK;
-    }
-
     return LIGHT;
   }
 
@@ -37,10 +32,6 @@ export function getTheme(): Theme {
   const stored = localStorage.getItem(THEME_STORAGE_KEY);
   if (stored === 'dark' || stored === 'light') {
     return stored;
-  }
-  
-  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
   }
   
   return 'light';
