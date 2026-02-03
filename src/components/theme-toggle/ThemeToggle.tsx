@@ -26,6 +26,7 @@ const rayVariants = {
 export default function ThemeToggle() {
   const [theme, setThemeState] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -46,6 +47,7 @@ export default function ThemeToggle() {
   }, []);
 
   const handleToggle = () => {
+    setHasAnimated(true);
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     setThemeState(newTheme);
@@ -53,21 +55,23 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button className={styles.toggle} aria-label="Toggle theme">
+      <div className={styles.togglePlaceholder} aria-hidden>
         <span className={styles.placeholder} />
-      </button>
+      </div>
     );
   }
 
   const isDark = theme === 'dark';
+  const shouldAnimate = hasAnimated;
 
   return (
     <motion.button
       className={styles.toggle}
       onClick={handleToggle}
       aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0, scale: 0.85 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <AnimatePresence mode="wait" initial={false}>
         {isDark ? (
@@ -78,7 +82,7 @@ export default function ThemeToggle() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             variants={moonVariants}
-            initial="initial"
+            initial={shouldAnimate ? 'initial' : 'animate'}
             animate="animate"
             exit="exit"
             transition={{ duration: 0.3 }}
@@ -96,7 +100,7 @@ export default function ThemeToggle() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             variants={sunVariants}
-            initial="initial"
+            initial={shouldAnimate ? 'initial' : 'animate'}
             animate="animate"
             exit="exit"
             transition={{ duration: 0.3 }}
@@ -118,7 +122,6 @@ export default function ThemeToggle() {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  custom={i}
                   variants={rayVariants}
                 />
               );

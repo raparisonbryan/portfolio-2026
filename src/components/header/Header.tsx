@@ -51,66 +51,68 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   return (
-    <motion.header
-      className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}
-      variants={headerVariants}
-      animate={isHidden ? 'hidden' : 'visible'}
-      transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
-    >
-      <nav className={styles.nav}>
-        <motion.a
-          href="/"
-          className={styles.logo}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className={styles.logoText}>
-            <span className={styles.logoAccent}>{'<'}</span>
-            Bryan
-            <span className={styles.logoAccent}>{'/>'}</span>
-          </span>
-        </motion.a>
-
-        <ul className={styles.navLinks}>
-          {navLinks.map((link, index) => (
-            <motion.li
-              key={link.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <a href={link.href} className={styles.navLink}>
-                {link.label}
-              </a>
-            </motion.li>
-          ))}
-        </ul>
-
-        <div className={styles.actions}>
-          <ThemeToggle />
-          
-          <button
-            className={styles.menuButton}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            aria-expanded={isMobileMenuOpen}
+    <>
+      <motion.header
+        className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}
+        variants={headerVariants}
+        animate={isHidden ? 'hidden' : 'visible'}
+        transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
+      >
+        <nav className={styles.nav}>
+          <motion.a
+            href="/"
+            className={styles.logo}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <span className={`${styles.menuIcon} ${isMobileMenuOpen ? styles.open : ''}`}>
-              <span />
-              <span />
-              <span />
+            <span className={styles.logoText}>
+              <span className={styles.logoAccent}>{'<'}</span>
+              Bryan
+              <span className={styles.logoAccent}>{'/>'}</span>
             </span>
-          </button>
-        </div>
-      </nav>
+          </motion.a>
+
+          <ul className={styles.navLinks}>
+            {navLinks.map((link, index) => (
+              <motion.li
+                key={link.href}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <a href={link.href} className={styles.navLink}>
+                  {link.label}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+
+          <div className={styles.actions}>
+            <ThemeToggle />
+            
+            <button
+              className={styles.menuButton}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className={`${styles.menuIcon} ${isMobileMenuOpen ? styles.open : ''}`}>
+                <span />
+                <span />
+                <span />
+              </span>
+            </button>
+          </div>
+        </nav>
+      </motion.header>
 
       <motion.div
         className={styles.mobileMenu}
         initial={false}
         animate={isMobileMenuOpen ? 'open' : 'closed'}
         variants={{
-          open: { opacity: 1, height: 'auto', pointerEvents: 'auto' as const },
-          closed: { opacity: 0, height: 0, pointerEvents: 'none' as const },
+          open: { opacity: 1, pointerEvents: 'auto' as const },
+          closed: { opacity: 0, pointerEvents: 'none' as const },
         }}
         transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
       >
@@ -134,7 +136,7 @@ export default function Header() {
           ))}
         </ul>
       </motion.div>
-    </motion.header>
+    </>
   );
 }
 
